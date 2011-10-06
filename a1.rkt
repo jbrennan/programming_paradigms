@@ -41,3 +41,24 @@
   (print-row-iter row 0))
 
 (pascal 5)
+
+
+
+;;;; Question 4
+;(define (exp base power)
+;  (define (exp-iter b p product)
+
+
+
+;;;; Question 5
+(define (multiply t1 t2)
+  (define (mul-iter sum counter)
+    (if (>= counter t2)
+        sum
+        (mul-iter (+ sum t1) (+ 1 counter))))
+  (mul-iter 0 0))
+
+(multiply 2 3)
+
+
+
