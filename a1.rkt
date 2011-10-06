@@ -62,3 +62,66 @@
 
 
 
+;;;; Question 8
+(define (sqrt x)
+  
+  (define (good-enough? guess x)
+    (< (abs (- (square guess) x)) 0.001))
+  
+  (define (average x y)
+    (/ (+ x y) 2))
+  
+  (define (square x)
+    (* x x))
+  
+  (define (improve guess x)
+    (average guess ( / x guess)))
+  
+  (define (sqrt-iteration guess x)
+    (if (good-enough? guess x)
+        guess
+        (sqrt-iteration (improve guess x) x)))
+  
+  
+  (sqrt-iteration 1.0 x)) 
+
+(sqrt 2)
+
+;;;; Question 9
+(define (a-b a b)
+  ((cond ((> b 0) +) ((= b 0) -) (else *)) a b))
+
+;; This function will add a and b if b is positive and non-zero
+;; This function will subtract b from a if b is zero (which results in a)
+;; This function will multiply a and b if b is a negative number
+(a-b 2 5) ; returns the result of a + b
+(a-b 2 0) ; returns a
+(a-b 2 -5) ; returns a * b
+
+
+
+
+;;;; Question 10
+(define (sqrt x)
+  
+  (define (good-enough? guess x)
+    (< (abs (- (square guess) x)) 0.001))
+  
+  (define (average x y)
+    (/ (+ x y) 2))
+  
+  (define (square x)
+    (* x x))
+  
+  (define (improve guess x)
+    (average guess ( / x guess)))
+  
+  (define (sqrt-iteration guess x)
+    (if (good-enough? guess x)
+        guess
+        (sqrt-iteration (improve guess x) x)))
+  
+  
+  (sqrt-iteration 1.0 x)) 
+
+(sqrt 2)
