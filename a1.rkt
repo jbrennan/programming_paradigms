@@ -63,29 +63,30 @@
 
 
 ;;;; Question 8
-(define (sqrt x)
+(define (cubert x)
   
   (define (good-enough? guess x)
-    (< (abs (- (square guess) x)) 0.001))
+    (< (abs (- (cube guess) x)) 0.001))
   
   (define (average x y)
     (/ (+ x y) 2))
   
-  (define (square x)
-    (* x x))
+  (define (cube x)
+    (* x x x))
   
   (define (improve guess x)
-    (average guess ( / x guess)))
+    (/ (+ (/ x (expt guess 2)) (* 2 guess)) 3))
+    ;(average guess ( / x guess)))
   
-  (define (sqrt-iteration guess x)
+  (define (cubert-iteration guess x)
     (if (good-enough? guess x)
         guess
-        (sqrt-iteration (improve guess x) x)))
+        (cubert-iteration (improve guess x) x)))
   
   
-  (sqrt-iteration 1.0 x)) 
+  (cubert-iteration 1.0 x)) 
 
-(sqrt 2)
+(cubert 27)
 
 ;;;; Question 9
 (define (a-b a b)
@@ -102,10 +103,9 @@
 
 
 ;;;; Question 10
-(define (sqrt x)
-  
-  (define (good-enough? guess x)
-    (< (abs (- (square guess) x)) 0.001))
+
+;; part a.
+(define (sqrt x good-enough-proc?)
   
   (define (average x y)
     (/ (+ x y) 2))
@@ -117,11 +117,24 @@
     (average guess ( / x guess)))
   
   (define (sqrt-iteration guess x)
-    (if (good-enough? guess x)
+    (if (good-enough-proc? guess x)
         guess
         (sqrt-iteration (improve guess x) x)))
   
   
   (sqrt-iteration 1.0 x)) 
 
-(sqrt 2)
+
+;; define a couple of good-enough procedures
+
+(define (square x)
+  (* x x))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.000001))
+
+(define (good-enough2? guess x)
+  (< (abs (- (square guess) x)) 0.1))
+
+(sqrt 2 good-enough?)
+(sqrt 2 good-enough2?)
