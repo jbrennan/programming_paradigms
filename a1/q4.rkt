@@ -1,0 +1,30 @@
+#lang racket
+;;;; Question 4
+
+; This function computes the exponant given a base and power. it does so iteratively.
+
+(define (exp base power)
+  (define (even n)
+    (= 0 (remainder n 2)))
+  
+  (define (exp-iterative a b n)
+    (if (= 0 n)
+        a
+        (exp-iterative (* a b b) b (- n 1))))
+
+
+  (* (if (even power)
+         1
+         base)
+     (exp-iterative 1 base (quotient power 2))))
+
+(exp 2 6)
+
+(newline)
+
+(write "Test case #1 --> Testing (exp 2 6) ==> expect 64")
+(write (exp 2 6))
+(newline)
+(write "Test case #2 --> Testing (exp 3 0) ==> expect 1:")
+(write (exp 3 0))
+(newline)

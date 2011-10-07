@@ -1,0 +1,2 @@
+"Test case #1 --> Testing (q1a) ==> expect 521:"521
+"Test case #2 --> Testing (q1b) ==> expect (1/14):"1/14

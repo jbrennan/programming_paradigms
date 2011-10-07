@@ -1,0 +1,28 @@
+#lang racket
+
+;;;; Question 7
+
+;;;;;;;;;;;;;;;;
+; Loops a lot!
+;;;;;;;;;;;;;;;;
+
+(define (p) (p))
+
+(define (test x y) 
+  (if (= x 0)
+      0
+      y))
+
+(test 0 (p))
+
+
+; For applicative order, Ben will see 
+; (test 0 (p))
+; (test 0 (p)) ; (p) is evaluated, which just invokes (p) again, which just invokes... etc
+; etc.. because the procedure (p) is being evaluated, by invoking itself, so it recurses infinitely.
+
+; For normal-order evaluation, he would see 0 returned.
+; This is becuase normal-order evaluation would not evalute the y argument 
+; (which in this case is just a call to the procedure p)
+; until it is needed. Because the if call only looks at x, and in our case x was 0, so it just returns 0.
+; y is never evaluated, so the infinite recursion of (p) never starts.

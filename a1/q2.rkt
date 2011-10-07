@@ -1,0 +1,25 @@
+#lang racket
+
+;;;; Question 2
+; A recursive function taking one argument, n, an integer.
+; The first version is pure recursive, and the second version (which I could not solve) is iterative.
+(define (f n)
+  (if (< n 4)
+      n
+      (+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3))) (* 4 (f (- n 4))))))
+
+(f 5)
+
+(write "Test case #1 --> Testing (f 5) ==> expect 26:")
+(write (f 5))
+(newline)
+(write "Test case #2 --> Testing (f 3) ==> expect 3:")
+(write (f 3))
+(newline)
+
+;(define (f2 n)
+ ; (define (f-iter n sum factor)
+  ;  (if (< n 4)
+   ;     n
+    ;    (
+;;;; Got lost for Part B :(

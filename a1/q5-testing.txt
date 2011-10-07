@@ -1,0 +1,2 @@
+"Test case #1 --> Testing (multiply 2 3) ==> expect 6"6
+"Test case #2 --> Testing (multiply 0 4) ==> expect 0"0

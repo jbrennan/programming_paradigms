@@ -1,0 +1,2 @@
+"Test case #1 --> Testing (cubert 27) ==> expect 521:"3.0000005410641766
+"Test case #2 --> Testing (cubert 64) ==> expect (1/14):"4.000017449510739

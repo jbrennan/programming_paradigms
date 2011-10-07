@@ -1,0 +1,2 @@
+"Test case #1 --> Testing (f 5) ==> expect 26:"26
+"Test case #2 --> Testing (f 3) ==> expect 3:"3

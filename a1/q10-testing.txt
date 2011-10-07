@@ -1,0 +1,4 @@
+"Test case #a-1 --> Testing (sqrt 2 good-enough?) ==> expect ~1.4142..."1.4142135623746899
+"Test case #2 --> Testing (sqrt 2 good-enough2?) ==> expect ~1.41666..."1.4166666666666665
+"Test case #b --> Testing (sqrt-part-b 2 good-enough? 2) (2 iterations max) ==> expect 1.5"1.5
+"Test case #b --> Testing (sqrt-part-b 2 good-enough? 10) ==> (10 iterations max) expect ~1.4142..."1.4142135623746899

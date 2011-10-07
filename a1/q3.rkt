@@ -1,0 +1,35 @@
+#lang racket
+
+
+;;;; Question 3
+
+; This function prints exactly one row of pascal's triangle, as chosen by the 'row' argument (integer)
+; it prints out all elements of that row by using an internal recursive function to return
+; the proper element for a given row/col combination
+(define (pascal row)
+  
+  ;; get a given element of the triangle
+  (define (p-row-col r c)
+    (cond ((= 0 r) 1)
+          ((= 1 r) 1)
+          ((= 0 c) 1)
+          ((= c r) 1)
+          (else (+ (p-row-col (- r 1) (- c 1)) (p-row-col (- r 1) c)))))
+  
+  ;; print all the columns in the given row
+  (define (print-row-iter r counter)
+    (if (> counter r)
+        (newline)
+        (begin (display (p-row-col r counter))
+                     (print-row-iter r (+ counter 1)))))
+  (print-row-iter row 0))
+
+(pascal 5)
+
+
+(write "Test case #1 --> Testing (pascal 3) ==> expect 1331:")
+(write (pascal 3))
+(newline)
+(write "Test case #2 --> Testing (pascal 4) ==> expect 14641:")
+(write (pascal 4))
+(newline)
