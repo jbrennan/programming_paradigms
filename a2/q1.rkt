@@ -27,7 +27,7 @@
   (make-interval (- (lower i1) (upper i2)) (- (upper i1) (lower i2))))
 
 ;; test the subtraction
-(subtract-interval (make-interval 5 10) (make-interval 5 10))
+(subtract-interval (make-interval 5 10) (make-interval 10 10))
 
 
 (define (multiply-interval i1 i2)
@@ -42,4 +42,18 @@
   (make-interval (min (ac) (ad) (bc) (bd)) (max (ac) (ad) (bc) (bd))))
 
 (multiply-interval (make-interval 2 4) (make-interval 3 6))
-        
+
+
+(define (divide-interval i1 i2)
+  (define (contains-zero)
+    (if (= 0 (lower i2))
+        #t
+        (if (= 0 (upper i2))
+            #t
+            #f)))
+  (if (contains-zero)
+      i2
+      (multiply-interval i1 (make-interval (/ 1 (upper i2)) (/ 1 (lower i2))))))
+
+(divide-interval (make-interval 2 4) (make-interval 4 8))
+(divide-interval (make-interval 2 4) (make-interval 0 8))
