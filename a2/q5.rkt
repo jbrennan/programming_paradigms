@@ -3,20 +3,46 @@
 ;; Question 5
 
 (define (make-graph)
-  (let ([graph '()])
+  (let ([graph (cons '() '())])
     
-    (define (make-edge x y)
-      (newline))
-  
-    (define (make-node n)
-      (newline))
-  
-  
+    
+    ;; helpers
+    (define (get-v) (car graph))
+    (define (get-e) (cdr graph))
+    (define (set-v new-v)
+      (set! graph (cons new-v (cdr graph))))
+    
+    (define (set-e new-e)
+      (set! graph (cons (car graph) new-e)))
+    
+    ; adding/removing a node to/from the graph
+    (define (add-v v)
+      (set-v (append (get-v) (list v))))
+    
+    (define (del-v v)
+      (set-v (remq v (get-v))))
+    
+    ; add/del an edge from storage
+    (define (add-e e)
+      (set-e (append (get-e) (list e))))
+    
+    (define (del-e)
+      (set-e (remq e (get-e))))
+    
+    (define (contains-node node)
+      (if (= #f (member node (get-v)))
+          #f ; not a member
+          #t))
+    
+    ;;;;;;;; Main functions
+    ;; assuming this node doesn't already exist in the graph..
     (define (add-node n)
-      (newline))
+      (add-v n))
   
-    (define (add-edge n1 n2)
-      (newline))
+    (define (add-edge edge)
+      (if (and (contains-node (car edge)) (contains-node (cdr edge))
+          (add-e edge)
+          (print "can't add edge -- at least one node doesn't exist in the graph"))))
   
     (define (delete-node n)
       (newline))
@@ -40,6 +66,14 @@
             (else (error "Unknown message! -- make-graph" m))))
   
     dispatch))
+
+(define (make-node symbol)
+  symbol)
+
+(define (make-edge n1 n2)
+  (cons n1 n2))
+
+
 
 (define g (make-graph))
 ((g 'delete-edge) 'zz)
