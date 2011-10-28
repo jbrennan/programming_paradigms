@@ -26,11 +26,11 @@
     (define (add-e e)
       (set-e (append (get-e) (list e))))
     
-    (define (del-e)
+    (define (del-e e)
       (set-e (remq e (get-e))))
     
     (define (contains-node node)
-      (if (= #f (member node (get-v)))
+      (if (equal? #f (member node (get-v)))
           #f ; not a member
           #t))
     
@@ -40,18 +40,15 @@
       (add-v n))
   
     (define (add-edge edge)
-      (if (and (contains-node (car edge)) (contains-node (cdr edge))
+      (if (and (contains-node (car edge)) (contains-node (cdr edge)))
           (add-e edge)
-          (print "can't add edge -- at least one node doesn't exist in the graph"))))
+          (print "can't add edge -- at least one node doesn't exist in the graph")))
   
     (define (delete-node n)
       (newline))
   
     (define (delete-edge e)
-      graph
-      (newline)
-      (set! graph (append graph '(d e f)))
-      graph)
+      (del-e e))
   
   
     (define (print-graph)
@@ -76,5 +73,18 @@
 
 
 (define g (make-graph))
-((g 'delete-edge) 'zz)
-((g 'delete-edge) 'zz)
+(define n1 (make-node 'node1))
+(define n2 (make-node 'node2))
+(define n3 (make-node 'node3))
+
+(define e1 (make-edge n1 n2))
+(define badE (make-edge n3 'baaaaaad))
+
+
+;; test some of the graph features
+((g 'add-node) n1)
+((g 'add-node) n2)
+((g 'add-node) n3)
+
+((g 'add-edge) e1)
+((g 'add-edge) badE)
