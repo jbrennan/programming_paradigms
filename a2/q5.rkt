@@ -34,6 +34,13 @@
           #f ; not a member
           #t))
     
+    (define (remove-edges node)
+      (set-e (filter (lambda (ele-e)
+                       (if (or (eq? node (car ele-e)) (eq? node (cdr ele-e)))
+                           #f
+                           #t))
+                     (get-e))))
+    
     ;;;;;;;; Main functions
     ;; assuming this node doesn't already exist in the graph..
     (define (add-node n)
@@ -45,14 +52,26 @@
           (print "can't add edge -- at least one node doesn't exist in the graph")))
   
     (define (delete-node n)
-      (newline))
+      (remove-edges n)
+      (del-v n))
   
     (define (delete-edge e)
       (del-e e))
   
   
+    (define (print-graph-debug)
+      graph)
+    
     (define (print-graph)
-      (newline))
+      (map (lambda (node)
+             (append (list node "is adjacent to:") (map (lambda (edg) ;; returns the ADJACENT node from the given edge (which is already filtered so we know the edge contains the given node as either car or cdr)
+                    (if (eq? (car edg) node)
+                             (cdr edg)
+                             (car edg)))
+                    (filter (lambda (edge) ;; filters ALL edges down to only those containing the given "node"
+                       (or (eq? node (car edge)) (eq? node (cdr edge))))      
+              (get-e)))))
+           (get-v)))
   
     (define (dispatch m)
       (cond ((eq? m 'add-node) add-node)
@@ -60,7 +79,8 @@
             ((eq? m 'delete-node) delete-node)
             ((eq? m 'delete-edge) delete-edge)
             ((eq? m 'print-graph) print-graph)
-            (else (error "Unknown message! -- make-graph" m))))
+            ((eq? m 'debug) print-graph-debug)
+            (else (error "Unknown message! -- make-graph\n" m) (newline))))
   
     dispatch))
 
@@ -76,8 +96,10 @@
 (define n1 (make-node 'node1))
 (define n2 (make-node 'node2))
 (define n3 (make-node 'node3))
+(define n4 (make-node 'node4))
 
 (define e1 (make-edge n1 n2))
+(define e2 (make-edge n1 n4))
 (define badE (make-edge n3 'baaaaaad))
 
 
@@ -85,6 +107,14 @@
 ((g 'add-node) n1)
 ((g 'add-node) n2)
 ((g 'add-node) n3)
+((g 'add-node) n4)
 
 ((g 'add-edge) e1)
+((g 'add-edge) e2)
 ((g 'add-edge) badE)
+(newline)
+((g 'debug))
+((g 'print-graph))
+
+;((g 'delete-node) n2)
+;((g 'print-graph))
