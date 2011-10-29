@@ -1,0 +1,6 @@
+"subsets of '(a b c) ==> expecting: '(() (c) (b) (b c) (a) (a c) (a b) (a b c))"
+'(() (c) (b) (b c) (a) (a c) (a b) (a b c))
+"filtering given a predicate: odd? of '(1 2 3 4 5 6). expecting ==> '(5 3 1)"
+'(5 3 1)
+"interleaving 2 lists. second list has more elements, so they're added to the end"
+"doing: (interleave '(a b c) '(d e f g h)).. expecting ==> '(a d b e c f g h)"'(a d b e c f g h)

@@ -9,7 +9,9 @@
         (append rest (map (lambda (sub) (cons (car x) sub)) rest)))))
       
       
-(trace subsets)
+;(trace subsets)
+(write "subsets of '(a b c) ==> expecting: '(() (c) (b) (b c) (a) (a c) (a b) (a b c))")
+(newline)
 (subsets '(a b c))
 
 
@@ -31,7 +33,9 @@
   ; but since it wasn't specified, I'm not going to bother.
   (filter-iter predicate lst '()))
     
-  
+
+(write "filtering given a predicate: odd? of '(1 2 3 4 5 6). expecting ==> '(5 3 1)")
+(newline)
 (filter odd? '(1 2 3 4 5 6))
       
 
@@ -57,6 +61,9 @@
   
   (interleave-helper l1 l2 '()))
 
+(write "interleaving 2 lists. second list has more elements, so they're added to the end")
+(newline)
+(write "doing: (interleave '(a b c) '(d e f g h)).. expecting ==> '(a d b e c f g h)")
 (interleave '(a b c) '(d e f g h))
             
         

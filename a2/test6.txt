@@ -1,0 +1,8 @@
+"average of 10 20 30 40... expecting: 25"
+25
+"average of 4... expecting 4"
+4
+"increasing? of 1 2 7 4... expecting ==> #f"
+#f
+"increasing? of 5 5... expecting: #t"
+#t
