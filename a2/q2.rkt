@@ -18,11 +18,14 @@
 (define (record-label record)
   (car (cdr (cdr (cdr record)))))
 
+(write "About to create an album then pull out data about this album")
+(newline)
 (define record (record-maker '(Yellow Submarine) '1968 '(The Beatles) 'Apple))
 (record-name record)
 (record-year record)
 (record-artist record)
 (record-label record)
+(newline)
 
 
 ; part b
@@ -64,14 +67,9 @@
 
 
 
-;(define (add-record record lst)
-;  (append lst (list record))) ; though 'record should already be a list, we want to append it as a list, not its elements
-
-;(define (find-record record lst)
-;  (filter lst (lambda (ele-record) (if (eq? (record-name ele-record) (record-name record)) #t #f))))
-
-
 ;; define some records for testing with
+(write "define some records for testing with")
+(newline)
 (define highway (record-maker '(Highway 61 Revisited) '1965 '(Bob Dylan) 'Columbia))
 (define freewheelin (record-maker '(The Freewheelin Bob Dylan) '1963 '(Bob Dylan) 'Columbia))
 (define the-times (record-maker '(The Times They Are A-Changin) '1964 '(Bob Dylan) 'Columbia))
@@ -79,16 +77,20 @@
 
 
 ;; create the shelf, then add some records
+(write "create the shelf, then add some records")
 (define shelf (create-record-shelf '()))
 ((shelf 'add-record) highway)
 ((shelf 'add-record) freewheelin)
 ((shelf 'add-record) the-times)
 ((shelf 'add-record) tago)
 ((shelf 'add-record) record)
+(newline)
+(write "Print the shelf so far")
 ((shelf 'print)) ;; print it out just to see so far..
 
 
 ;; find a record
+(write "finding a record")
 (newline)
 (newline)
 ((shelf 'find-record) '(Yellow Submarine))
@@ -96,11 +98,14 @@
 
 
 ;; Print out the discography of a given artist
+(write "Find all albums by Bob Dylan")
 (newline)
 ((shelf 'discography-of) '(Bob Dylan))
 
 
 ;; remove a given album
+(newline)
+(write "remove a given album, then print out the record-shelf again")
 (newline)
 ((shelf 'delete-record) '(Highway 61 Revisited))
 ((shelf 'print))

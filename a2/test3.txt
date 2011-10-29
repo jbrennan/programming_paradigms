@@ -1,0 +1,10 @@
+"special-car and special-cdr.. expecting 'x and 'y respectively"
+'x
+'y
+"custom car and cdr.. expecting 'a and 'b respectively"
+'a
+'b
+"triple...first, second, third,.. expecting 'd, 'e, 'f respectively"
+'d
+'e
+'f

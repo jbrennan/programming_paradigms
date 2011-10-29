@@ -1,0 +1,27 @@
+"About to create an album then pull out data about this album"
+'(Yellow Submarine)
+1968
+'(The Beatles)
+'Apple
+
+"define some records for testing with"
+"create the shelf, then add some records"
+"Print the shelf so far"'(((Highway 61 Revisited) 1965 (Bob Dylan) Columbia)
+  ((The Freewheelin Bob Dylan) 1963 (Bob Dylan) Columbia)
+  ((The Times They Are A-Changin) 1964 (Bob Dylan) Columbia)
+  ((Tago Mago) 1972 (Can) (United Artists))
+  ((Yellow Submarine) 1968 (The Beatles) Apple))
+"finding a record"
+
+'(((Yellow Submarine) 1968 (The Beatles) Apple))
+'()
+"Find all albums by Bob Dylan"
+'(((Highway 61 Revisited) 1965 (Bob Dylan) Columbia)
+  ((The Freewheelin Bob Dylan) 1963 (Bob Dylan) Columbia)
+  ((The Times They Are A-Changin) 1964 (Bob Dylan) Columbia))
+
+"remove a given album, then print out the record-shelf again"
+'(((The Freewheelin Bob Dylan) 1963 (Bob Dylan) Columbia)
+  ((The Times They Are A-Changin) 1964 (Bob Dylan) Columbia)
+  ((Tago Mago) 1972 (Can) (United Artists))
+  ((Yellow Submarine) 1968 (The Beatles) Apple))

@@ -14,7 +14,8 @@
 
 (define (special-cdr special-pair)
   (special-pair (lambda (p1 p2) p2)))
-
+(write "special-car and special-cdr.. expecting 'x and 'y respectively")
+(newline)
 (special-car (special-cons 'x 'y))
 (special-cdr (special-cons 'x 'y))
 
@@ -30,7 +31,8 @@
 (define (new-cdr new-pair)
   (new-pair #f))
 
-
+(write "custom car and cdr.. expecting 'a and 'b respectively")
+(newline)
 (new-car (new-cons 'a 'b))
 (new-cdr (new-cons 'a 'b))
 
@@ -51,6 +53,8 @@
   (trpl 'z))
 
 ; test them
+(write "triple...first, second, third,.. expecting 'd, 'e, 'f respectively")
+(newline)
 (first (triple 'd 'e 'f))
 (second (triple 'd 'e 'f))
 (third (triple 'd 'e 'f))
