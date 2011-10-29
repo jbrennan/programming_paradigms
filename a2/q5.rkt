@@ -2,6 +2,14 @@
 
 ;; Question 5
 
+
+; This function returns the dispatch procedure which waits for further instruction
+; This instruction is in the form of a symbol argument, one of:
+; 'add-node, 'add-edge, 'delete-node, 'delete-edge, 'print-graph
+;
+; Those procedures, dispatched to the caller, mostly take additional arguments (aside from print-graph)
+; -node and -edge procs all need 1 argument
+; Nodes and Edges are to be contructed by external procedures provided below.
 (define (make-graph)
   (let ([graph (cons '() '())])
     
@@ -84,6 +92,9 @@
   
     dispatch))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Node and Edge making procedures
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (make-node symbol)
   symbol)
 
@@ -104,6 +115,8 @@
 
 
 ;; test some of the graph features
+(write "Adding 4 nodes and 3 edges. the last edge is invalid. Then printing the graph (and a debug version which shows the internal structure of my graph object)")
+(newline)
 ((g 'add-node) n1)
 ((g 'add-node) n2)
 ((g 'add-node) n3)
@@ -113,8 +126,15 @@
 ((g 'add-edge) e2)
 ((g 'add-edge) badE)
 (newline)
+(write "printing the internal structure of the graph... just to see it")
+(newline)
 ((g 'debug))
+
+(write "printing the adjacency list!!")
+(newline)
 ((g 'print-graph))
 
-;((g 'delete-node) n2)
-;((g 'print-graph))
+(write "deleting n2, then printing the graph again")
+(newline)
+((g 'delete-node) n2)
+((g 'print-graph))

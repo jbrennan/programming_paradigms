@@ -1,0 +1,13 @@
+"Adding 4 nodes and 3 edges. the last edge is invalid. Then printing the graph (and a debug version which shows the internal structure of my graph object)"
+"can't add edge -- at least one node doesn't exist in the graph"
+"printing the internal structure of the graph... just to see it"
+'((node1 node2 node3 node4) (node1 . node2) (node1 . node4))
+"printing the adjacency list!!"
+'((node1 "is adjacent to:" node2 node4)
+  (node2 "is adjacent to:" node1)
+  (node3 "is adjacent to:")
+  (node4 "is adjacent to:" node1))
+"deleting n2, then printing the graph again"
+'((node1 "is adjacent to:" node4)
+  (node3 "is adjacent to:")
+  (node4 "is adjacent to:" node1))

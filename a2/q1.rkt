@@ -21,13 +21,22 @@
   (make-interval (+ (lower interval-a) (lower interval-b)) (+ (upper interval-a) (upper interval-b))))
 
 ;; test the addition a bit
-(add-interval (make-interval 0 5) (make-interval 1 5)) ; expect (1 . 10)
+(newline)
+
+(write "Test case #1 --> Testing (add-interval (make-interval 0 5) (make-interval 1 5)) ==> expect (1 . 10)")
+(write (add-interval (make-interval 0 5) (make-interval 1 5))) ; expect (1 . 10))
+(newline)
+
+
 
 (define (subtract-interval i1 i2)
   (make-interval (- (lower i1) (upper i2)) (- (upper i1) (lower i2))))
 
 ;; test the subtraction
-(subtract-interval (make-interval 5 10) (make-interval 10 10))
+(write "Test case #2 --> Testing (subtract-interval (make-interval 5 10) (make-interval 10 10)) ==> expect (-5 . 0)")
+(write (subtract-interval (make-interval 5 10) (make-interval 10 10)))
+(newline)
+
 
 
 (define (multiply-interval i1 i2)
@@ -41,7 +50,11 @@
     (* (upper i1) (upper i2)))
   (make-interval (min (ac) (ad) (bc) (bd)) (max (ac) (ad) (bc) (bd))))
 
-(multiply-interval (make-interval 2 4) (make-interval 3 6))
+
+(write "Test case #3 --> Testing (multiply-interval (make-interval 2 4) (make-interval 3 6)) ==> expect (6 . 24)")
+(write (multiply-interval (make-interval 2 4) (make-interval 3 6)))
+(newline)
+
 
 
 (define (divide-interval i1 i2)
@@ -52,8 +65,12 @@
             #t
             #f)))
   (if (contains-zero)
-      i2
+      (error "divide-interval -- the second interval contained a 0. illegal")
       (multiply-interval i1 (make-interval (/ 1 (upper i2)) (/ 1 (lower i2))))))
 
-(divide-interval (make-interval 2 4) (make-interval 4 8))
+(write "Test case #4 --> Testing (divide-interval (make-interval 2 4) (make-interval 4 8)) ==> expect (1/4 . 1)")
+(write (divide-interval (make-interval 2 4) (make-interval 4 8)))
+(newline)
+
+(write "finally, this one contains a 0 in the second argument interval which results in an error!!")
 (divide-interval (make-interval 2 4) (make-interval 0 8))
